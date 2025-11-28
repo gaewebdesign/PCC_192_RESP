@@ -1,0 +1,32 @@
+<html>
+
+<?php
+
+ $url = "http://www.sfmongoldata.appspot.com/clubday";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, $url);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+$obj = json_decode($result, $assoc= TRUE);
+
+date_default_timezone_set('America/Los_Angeles');
+
+if( sizeof($obj) == 0) return;
+
+print( "Name,E-mail,Notes <br>");
+foreach ( $obj as $row ){
+
+   print( $row["fname"]." ".$row["lname"]."&nbsp; ,&nbsp; ".$row["email"].",<br>");
+
+}
+
+
+?>
+
+
+</html>

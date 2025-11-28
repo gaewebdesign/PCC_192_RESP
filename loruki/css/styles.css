@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root{
+
+    --primary-color: rgb(128, 160, 228);
+    --card-color: rgb(88, 91, 252);
+    --link-hover: rgb(221, 13, 13);
+
+    
+
+    --secondary-color: #1c3fa8;
+    
+    --dark-color: #002240;
+    --light-color: #f4f4f4;
+
+    --dark-color: #80baec;
+
+    /* for docs.html alert */
+    --success-color: #5c79b8;
+    --error-color: #d9534f;
+
+
+}
+
+/*  universal */
+*{
+
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body{
+
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    background-color: var(--primary-color); /* re-check why needed roger */
+    line-height: 1.6;
+}
+
+ul{
+    list-style-type: none;
+
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+p {
+    margin: 10px;
+}
+
+h1,h2{
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;   /* left, right zero */
+
+}
+
+img{
+
+    width: 100%; /* take 100% of container  */
+}
+
+
+/* for doc.html*/
+code, pre{
+
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    
+}
+
+.navbar{
+
+    background-color: var(--primary-color);
+    color: white;
+    height: 70px;
+
+}
+
+.navbar .flex{
+
+    justify-content: space-between;
+}
+
+
+.navbar ul{
+    display:flex;         /* moves horizontal */
+
+
+}
+
+.navbar a{
+
+    color: #f3ecec;
+    padding: 10px;  /* space between links */
+    margin: 0 5px;
+
+}
+
+.navbar a:hover{
+
+    border-bottom: 2px rgb(221, 13, 13) solid;
+    border-bottom: 2px var(--link-hover) solid;
+}
+
+/* Showcase ------------------------------ */
+
+.showcase{
+    height: 300px;
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+
+
+}
+
+.showcase h1{
+
+      font-size: 40px;
+
+}
+
+.showcase p{
+   
+    margin: 20px 0;  /* top, bottom  0: left,right*/
+
+}
+
+.showcase-form {
+
+    position: relative;
+    top: 60px;
+    height: 350px;    /* this causes scroll bar to appear*/
+
+    width: 400px;
+    padding: 40px;
+    z-index: 100;   /* always in front */
+
+    /* added @1:55 roger */
+    animation: slideInFromRight 1s ease-in;
+    
+}
+
+
+.showcase .grid{
+    
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+
+    overflow: visible;   /* make scroll bar go away  see .showcase-form  height: 350px (above) */
+
+}
+
+/* @1:54 roger */
+.showcase-text{
+
+    animation: slideInFromLeft 1s ease-in;
+
+}
+
+
+
+
+
+.showcase-form .form-control{
+    margin: 30px 0;
+}
+
+.showcase-form  input[type='text'], .showcase-form  input[type='email']{
+
+    border: none;
+    background-color: var(--card-color);
+    color: rgb(196, 61, 155);
+
+    color: white;
+    border-bottom: 1px solid #b4becb;
+    border-bottom: 1px solid var(--link-hover);
+    
+
+    width: 100%;    /* extends with */
+    padding: 3px;
+    margin: 7px;
+    font-size: 24px;
+    
+    
+}
+
+
+.showcase-form input{
+
+    outline:none;
+
+}
+
+.showcase:before , .showcase::after{
+
+    content: '';
+    position: absolute;
+    height: 2px;
+    bottom: -910px;
+    right: 0;
+    left: 0;
+ /* to show Slant at bottom
+background-color: red;
+*/
+    background-color: white;
+    background-color: var(--primary-color);
+    
+    transform: skewY(-3deg);
+    
+/* so this works in other browsers*/
+    -webkit-transform: skewY(-3deg);
+    -moz-transform: skewY(-3deg);
+    -ms-transform: skewY(-3deg);
+
+}
+
+
+/* Stats  ---------------------------- */
+
+.stats{
+
+    padding-top: 100px;
+
+    animation: slideInFromBottom 1.2s ease-in;  /* @1:55 roger */    
+}
+
+.stats-heading{
+    max-width:500px;
+    margin: auto;
+
+    
+
+}
+
+.stats .grid h3{
+
+    font-size: 35px;
+
+}
+
+.stats .grid p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.cli .grid{
+
+    grid-template-columns: repeat(3 ,1fr);
+
+    grid-template-rows: repeat(2,1fr);
+
+
+}
+
+/* image is first child */
+.cli .grid > *:first-child{
+
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+
+}
+/* Cloud */
+.cloud .grid{
+
+    grid-template-columns: 4fr 3fr;
+}
+
+.languages .flex{
+
+    flex-wrap: wrap;   /* images go onto next line if browser re-sized  roger <-------------- */
+
+}
+
+.languages .card{
+
+    text-align: center;
+    margin: 18px 10px 40px;
+    transition: transform 0.2s ease-in;   /* transition goes smoother */
+}
+
+.languages .card h4{
+
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.languages .card:hover{
+
+    
+    transform: translateX(7px);
+    transform: translate(7px , -15px);   /* translate up and to the right */
+}
+
+
+.footer .social a{
+    margin: 0px 0px;
+}
+
+/* features.html */
+.features-head img{
+    width: 200px;
+    justify-self: flex-end;  /* moves to end of flex box */
+
+}
+
+.features-sub-head img{
+    width: 300px;
+    justify-self: flex-end;
+
+}
+
+
+
+.features-main .card > i {
+    margin-right: 20px;
+
+}
+
+.features-main .grid{
+    padding: 30px;
+
+}
+
+.features-main .grid > *:first-child {
+    grid-column: 1 / span 3;  /* Make the first one span 3 columns (is on a row all by itself  roger <------- use this!!! */
+
+}
+
+.features-main .grid > *:nth-child(2) {
+    grid-column: 1 / span 2;  /* Make the second  span 2 columns (places itself plus one more on a row  roger <------- use this!!! */
+                              /* the remaining 3 all stay on one row since it-s a grid-3 */
+}
+
+/* Documentation */
+.docs-head img{
+    width: 200px;
+    justify-self: flex-end;  /* moves to end of flex box */
+
+}
+
+.docs-main h3{
+    margin: 20px 0;
+    
+}
+
+.docs-main .grid{
+    grid-template-columns: 1fr 2fr;         /* wider for 2nd column 1:46 roger */
+    align-items: flex-start ;               /* flex-end at bottom */
+
+}
+
+.docs-main nav li{
+    font-size: 17px;
+    padding-bottom: 5 px;
+    margin-bottom: 5 px;
+    border-bottom: 1px #ccc solid;
+}
+
+.docs-main  a:hover{
+
+    font-weight: bold;
+
+}
+
+/* Animations */
+/* docs.html  @1:53 roger */
+@keyframes slideInFromLeft{
+
+    0%{
+        transform: translateX(-100%);
+
+    }
+    100%{
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes slideInFromRight{
+
+    0%{
+        transform: translateX(100%);
+
+    }
+    100%{
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes slideInFromTop{
+    0%{
+        transform: translateY(-100%);
+
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom{
+    0%{
+        transform: translateY(100%);
+
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
+
+
+/* Media Queries */
+/* Place into a single column for mobile -- for all pages (just go through all the grids) roger */
+@media(max-width: 768px){
+   /* showcase part */
+   .grid, .showcase .grid , .stats .grid , .cli .grid , .cloud .grid
+   .features-main .grid , .docs-main .grid{
+   
+    /* .features-main .grid .docs-main .grid are for docs.html */ 
+    /* stack in one colymn */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+   }
+
+   .showcase{
+        height: auto;   /* before was overlapping*/
+
+   }
+
+   .showcase-text{
+        text-align: center;
+        margin-top: 40px;
+
+        animation: slideInFromTop 1.3s ease-in;  /* change for tablet -- drops down from the top roger */
+   }
+
+   .showcase-form{
+
+    justify-self: center;
+    margin: auto;
+    
+    animation: slideInFromBottom 1.3s ease-in;  /* @1:56 change for tablet -- drops down from the bottom  roger */
+
+    
+   }
+    
+   /* taken from above (see 1:21) making into one column, row  for Mobile */
+   
+   cli .grid > *:first-child{
+       grid-column:1;
+       grid-row: 1;
+   }
+
+   /* added by roger --- must've missed this earlier (before 1:50)   in video */
+   .features-head grid, .features-sub-head .grid, .docs-head .grid{
+        grid-template-columns: 1fr;
+   }
+
+   .features-head, .features-sub-head, .docs-head{
+       text-align:  center;
+   }
+
+   .features-head img, .features-sub-head img , .docs-head img {
+    justify-self:  center;
+    }
+
+    /* 1:52 doesnt work debug */
+    .features-main .grid > *:first-child,
+    .features-main .grid > :nth-child(2)
+    {
+        grid-column:  1;
+    }
+
+}
+
+@media(max-width: 500px){
+
+    .navbar{
+        height: 110px; /* instead of 70 */
+    }
+
+    .navbar .flex{
+        flex-direction: column ;   /* instead of row */
+    }
+
+    .navbar ul{
+
+        padding: 10px;
+        background-color: rgba(0,0,0,0.1);  /* transparent background */
+
+    }
+
+
+
+
+}
+
+

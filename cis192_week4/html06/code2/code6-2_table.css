@@ -1,0 +1,56 @@
+﻿@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 6
+   Coding Challenge 2
+   
+   Author:    Roger Okamoto
+   Date:     2/10/2022 (Thursday)
+   Filename: code6-2_table.css
+
+*/
+
+
+table{
+
+   border-collapse: collapse;
+   margin: 20px;
+}
+
+table thead th{
+
+   background: red;
+   font-size: 1.5em;
+   border: 1px solid gray;
+
+   background: linear-gradient( to top right, rgb(245, 33, 33), rgb(173, 221, 39));
+}
+
+td{
+
+   border: 1px solid gray;
+   width: 50px;
+   height: 50px;
+   text-align: left;
+   vertical-align: top;
+   font-size: .85em;
+
+
+}
+
+td.blank{
+   background: linear-gradient( to bottom right ,red, gray);
+
+}
+
+/* add th ,  daily alone doesnt work  */
+th.daily{
+
+   background: linear-gradient(to bottom  right, red, gray)
+}
+
+
+
+
+

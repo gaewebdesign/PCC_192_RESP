@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile  /home/users/web/b1240/glo.sctennisclub/documents/private/.htpasswd
+require valid-user
+#golden

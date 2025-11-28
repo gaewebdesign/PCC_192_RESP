@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 5
+   Coding Challenge 3
+
+   Author:   Roger Okamoto 
+   Date:     2/10/2022
+   Filename: code5-3_print.css
+
+*/
+
+ @page {
+   
+   size: A4;
+   size: 8.5in 11in;
+
+   margin-left: 1in;
+   margin-right: 1in;
+
+   background-color: rgb(240, 198, 219);
+
+}
+
+/* this also in layout 
+   removes visible underline link 
+*/
+a{
+   text-decoration: none;
+}
+
+
+/* prevent page break insde nav */
+nav{
+
+   page-break-inside: avoid;
+}
+
+nav > ol > li{
+   height: 0.3in;
+}
+
+a::after{
+
+   display: inline-block;
+   margin-left: 20px;
+   word-wrap : break-word;
+
+   /* adds actual URL (www.xxx.com) after link (for printing ) */
+   content: " [  " attr(href) "]";
+
+}
+
+

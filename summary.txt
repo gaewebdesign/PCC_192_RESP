@@ -1,0 +1,18 @@
+HHTML1
+code 1-3 Leonardo daVinci pictures
+code 1-4 Teton Crest Trail
+review Mobile Panini
+
+HTMLl2
+code 2-1 Literary Excerpt (has upper case letter at start of sentence) -- use for membership form description
+blockquote{
+ 
+   color: hsl(30,85%,45%);
+   font-size: 1.5em
+
+}
+
+blockquote::first-letter{
+   font-size: 1.5em;
+
+}

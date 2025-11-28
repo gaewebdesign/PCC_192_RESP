@@ -1,0 +1,54 @@
+order allow,deny
+deny from 184.154.36
+allow from all
+
+RewriteEngine on
+#RewriteLog /private/var/log/apache2/rewrite_log
+#LogLevel warn
+#LogLevel alert rewrite:trace6
+
+Options +FollowSymLinks
+RewriteEngine On
+
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^/$  ggtc.php  [NC,QSA,L]
+RewriteRule ^$  ggtc.php  [NC,QSA,L]
+
+RewriteRule ^signup$ ggtc.php  [NC,QSA,L]
+
+
+RewriteRule ^members/([\d]*)$ glist.php?year=$1  [NC,QSA,L]
+RewriteRule ^members/ members/2020  [NC,QSA,L]
+RewriteRule ^members members/2020  [NC,QSA,L]
+RewriteRule ^members$ members/2020  [NC,QSA,L]
+RewriteRule ^members$ glist.php?year=2020  [NC,QSA,L]
+RewriteRule ^full/([\d]*)$ glist.php?mode=full&year=$1  [NC,QSA,L]
+RewriteRule ^all/([\d]*)$ qlist.php?mode=full&year=$1  [NC,QSA,L]
+RewriteRule ^full$ glist.php?mode=full  [NC,QSA,L]
+#RewriteRule ^full$ full/2018  [NC,QSA,L]
+RewriteRule ^all$ full/2018  [NC,QSA,L]
+RewriteRule ^email/([\d]*)$ gmail.php  [NC,QSA,L]
+
+RewriteRule ^usta/ ustacheck.php  [NC,QSA,L]
+
+#Adminstration
+
+RewriteRule ^notify$ notification.php  [NC,QSA,L]
+RewriteRule ^notify/([\d]*)$ notification.php?transaction=$1  [NC,QSA,L]
+RewriteRule ^transfer/([\d]*)$ notification.php?transaction=$1  [NC,QSA,L]
+
+RewriteRule ^check$ checkers.php  [NC,QSA,L]
+RewriteRule ^process$ proceeding_to_paypal.php  [NC,QSA,L]
+
+RewriteRule ^pending$ qpending.php  [NC,QSA,L]
+RewriteRule ^pending/full$ qpending.php?mode=full  [NC,QSA,L]
+
+RewriteRule ^cancel cancel.php  [NC,QSA,L]
+RewriteRule ^done return.php  [NC,QSA,L]
+
+RewriteRule ^usta$ ustacheck.php  [NC,QSA,L]
+
+

@@ -1,0 +1,511 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+
+<script language="javascript">
+
+var ERR_NAME = (0x1)
+var ERR_EMAIL = (0x1<<1)
+var ERR_GENDER = (0x1<<2 )
+var ERR_RATING = (0x1<<3 )
+var ERR_MEMBER = (0x1<<4)
+var ERR_CHECKBOX = (0x1<<5)
+
+// 1,2,4,8, 16
+
+function JClick(regexp, current)
+{
+   err = Update()
+
+   message = " Verify "
+
+   if(err & 0x1 ) message += "Name "
+   if(err & 0x1<<1) message += "Email "
+   if(err & 0x1<<2) message += "Gender "
+   if(err & 0x1<<3) message += "Rating "
+   if(err & 0x1<<4) message += "Member "
+
+
+   if( err){
+//      $("#_ERROR").text( message )
+        $("#_ERROR").text( "please fill out completely " )
+//       $("#_MESSAGE").text( "please fill out completely " )
+
+//      $("#_MESSAGE").text(  message + " " + err)
+        $("#_MESSAGE").text(  "Please completely fill out all entries.  " + message)
+   }else{
+          $("#_TOURNAMENT").submit()
+
+
+          var request = $.ajax({
+             url: "ajax.php",
+             type:  "POST",
+             data: {
+                   "fname": "Jimmy",
+                   "lname": "Carter",
+                   "gender": "M",
+                   "ntrp": "4.5",
+                   "email": "mrpresident",
+                   "url": "cnn.gov",
+                   "member": "Y"
+             },
+
+            dataType: "html" });
+            request.done( function(msg){
+            });
+
+   }
+
+
+
+}
+
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+
+function Update()
+{
+
+   player_gender = $("#gender:checked").val()
+   player_ntrp = $("#ntrp:checked").val()
+   player_fname = $("#fname").val()
+   player_lname = $("#lname").val()
+   player_member = $("#member:checked").val()
+   player_email = $("#email").val()
+   player_url = $("#url").val()
+
+   err=0
+
+
+// NAME
+   if( player_fname.length <  2 ) err |= ERR_NAME
+   if( player_lname.length <  2 ) err |= ERR_NAME
+
+// EMAIL
+   if( player_email.length <  3 ) err |= ERR_EMAIL
+   if( player_url.length <  3 ) err |= ERR_EMAIL
+
+// REGULAR EXPRESSION to verify email
+   if( !validateEmail( player_email+"@"+player_url))  err |=ERR_EMAIL;
+
+
+// CHECKBOXES
+   if( player_gender=== undefined)  err |= ERR_GENDER
+   if( player_ntrp === undefined)  err |= ERR_RATING
+   if( player_member === undefined)  err |= ERR_MEMBER
+
+   $("#_ERRORCODE").text(err)
+
+   return err;
+}
+
+
+
+function SingleSelect(regex,current)
+{
+
+ re = new RegExp(regex);
+ forms =  document.forms.length
+ len =  document.forms[0].elements.length
+
+ for(i=0 ; i<forms; i++)
+  for(j = 0; j < len; j++) {
+      elm = document.forms[i].elements[j];
+
+      if (elm.type == 'checkbox') {
+//     if (re.test(elm.name)) {
+       if (re.test(elm.id)) {
+           elm.checked = false;
+     }
+  }
+}
+  current.checked = true;
+
+  Update()
+
+
+}
+
+function validateNumber( num )
+{
+    var re = /^[0-9]{10}/;    // 10 digits
+
+    return re.test(num);
+
+/*
+   for( var i=0 ; i< num.length ; i++){
+
+      if( num.charAt(i) < "0" || num.charAt(i) > "9" ) { 
+           return 1
+
+       }
+
+   }
+
+     return 0;
+*/
+
+}
+
+function CheckFields(){
+
+ fname = $("#_FIRST").val();
+ lname = $("#_LAST").val();
+ gender = $("#_GENDER").val();
+ ntrp = $("#_NTRP").val();
+ email = $("#_EMAIL").val();
+ url = $("#_URL").val();
+
+ err=0
+ message= ""
+ if(err){
+         $("#ERROR").text(message );
+         $("#ERROR").show();
+
+         $("#paypal").prop("checked", false);
+         $("#PaypalButton").hide()
+         $("#Signature").show()
+
+
+   }else{
+         $("#ERROR").text("" );
+         $("#ERROR").hide("" );
+   }
+
+        return err
+
+}
+
+
+function PaypalSubmit(){
+
+   $("Signature",{}).appendTo("#Sign");
+   $("<input>",{ type:'text',  class:'ename e400'}).appendTo("#Sign");
+   $("<input>",{value:"&nbsp;&nbsp; Date" , type:'text',  class:'ename e400'}).appendTo("#Sign");
+
+   $("<p>",{}).appendTo("#Sign");
+
+
+   $("#PaypalButton").show() 
+
+}
+
+function Initialize()
+{
+
+   var current   = new Date()
+   var deadline  = new Date(2016,5,1,23 ,59,59,0)   // year,month(0-11),day  June: 5  July 6
+
+   var month,day,hr,min
+   month = 5  // June
+   day=17
+   hr=20
+   min=11
+
+
+// Use for Adults
+   $("#_ADULT").show()
+   $("span._MIXED").hide()   // use for CLASS (instead of id)
+
+
+   $("#_MIXED > div").hide()
+
+  $("#_PAYPAL").show() 
+
+
+   if (current < deadline)
+       $("#_PAYPAL").show() 
+   else
+       $("#_CLOSED").hide() 
+
+// DETERMINE WHETHER NON-RESIDENTS CAN APPLY  ***************
+/*
+  var request = $.ajax({
+    url: "ajax.php",
+    type:  "GET",
+    dataType: "html"
+
+   });
+
+*/
+
+}
+
+function Paypal(){
+
+
+    if( $("#paypal:checked").val() != undefined ){
+             $("#PaypalButton").show() 
+             $("#Signature").hide() 
+       }else{
+           $("#PaypalButton").hide() ;
+             $("#Signature").show() 
+       }
+
+
+}
+
+
+window.onload = Initialize;
+
+</script>
+</head>
+<body>
+
+<style>
+
+
+
+.button
+{
+       width:750px;
+       width:58em;
+       font-size:17px;
+       color:#CEC4FA;
+       color:#FFFFFF;
+
+       background-color:#f7cc83;
+       background-color:#CA5100;
+       border-radius:5px;
+}
+
+.submitbutton
+{
+ width:270px;
+ font-size:17px;
+ color:#075;
+ background-color:#aed;
+ border-radius:5px;
+
+}
+
+.title
+{
+
+ font-size:20px;
+
+}
+
+.space{ line-height: .25 em;}
+p { margin-top: 0.18em;}
+
+
+body,html{
+      margin-top:1;
+      margin-left:30;
+      margin-right:25;
+//     font-size:26 px; 
+
+}
+
+body {
+       font-size:19px; 
+
+}
+
+#idform {display:inline;}
+#textcolor { color: red; }
+
+#red   { color: red; }
+#title { font-size:24 px; font-weight: bold;}
+#app   { font-size:22 px; font-weight: bold;}
+#hinst { font-size:18 px;font-weight: bold;}
+#inst  { font-size:18 px; }
+#form  { font-size:16 px; }
+
+#bar_tr{ border-top: 2px solid black;}
+#office   { font-size:14 px; }
+
+#entryinfo   { font-size:19 px; }
+#entryform    { font-size:18 px; }
+#entrywaiver  { font-size:19 px; }
+
+.ename { width : 450 px; }
+.ename{
+        font-family: "Comic Sans MS", "Brush Script MT", cursive;
+        font-size: 14px;
+        background: #fefefe;
+        border: none;
+        border-bottom: 1px solid black;
+        height : 3.5%;
+        height : 2.5em;
+        width : 20em;
+}
+
+.pemail {width: 15em}
+.pphone  { width : 7em; }
+.pntrp  { width : 7%; }
+.paddress  { width : 35%; }
+.pzip  { width : 10%; }
+.pteam  { width : 11.5%; }
+.paddress  { width : 35%; }
+.psign  { width : 30%; }
+.pwhite  { 
+        width : 35%; 
+        background-color: #ffff00;
+}
+
+
+#indent{
+        text-indent: 180px;
+}
+
+
+</style>
+
+<center>
+
+<p>
+<p>
+<div id="title"> Golden Gate Tennis Club</div>
+<div id="app"> www.goldengatetennisclub.org</div>
+<div id="app"> 2018 October Club Day</div>
+</center>
+
+<p>
+<center>
+
+<img src = "halloween2.jpg">
+
+</center>
+<br>
+
+<table>
+
+
+INSTRUCTIONS:
+
+<p>
+<div id="inst" style="font-size:17px;">
+ <ol>
+  <li> Fill out the application  </li> 
+  <li> Payment will be taken at the day of the event.  </li>
+  <li> <b>FREE</b> for club members, <b>$15</b> for nonclub members</li>
+  <li> If you need more information,  email Ken at <a href="mailto:rcyclops@goldengatetennisclub.org">rcyclops@goldengatetennisclub.org</a></li>
+
+<!--
+  <li> If your entry needs to be updated email <a href="mailto:clubday@goldengatetennisclub.org">clubday@goldengatetennisclub.org</a></li>
+-->
+  <li> Please note if you are a Golden Gate Tennis Club member </li>
+
+ </ol>
+  </div >
+
+<p>
+
+<table width="842"><td id="bar_tr"></td></table>
+
+<div id="form">
+
+ <form id="_TOURNAMENT" name="signup" action="check.php" method="post"> 
+
+<table width="400">
+
+  <div id="entryform">
+  <p>  
+  First Name: <input id="fname" value="" class="ename" name="fname" type="text"/> &nbsp;&nbsp;&nbsp;&nbsp;
+  Last Name:  <input id="lname" value="" class="ename" name="lname" type="text"/>  
+  &nbsp;
+  <p>
+  GENDER: 
+  &nbsp;M<input id="gender" type="checkbox" value="M" name="gender" onclick='SingleSelect("gender",this);'/>
+  &nbsp;W<input id="gender" type="checkbox" value="W" name="gender" onclick='SingleSelect("gender",this);'/>
+ 
+  <p>
+  NTRP: 
+
+  &nbsp;2.5<input id="ntrp" type="checkbox" value="2.5" name="ntrp" onclick='SingleSelect("ntrp",this);'/>
+  &nbsp;3.0<input id="ntrp" type="checkbox" value="3.0" name="ntrp" onclick='SingleSelect("ntrp",this);'/>
+  &nbsp;3.5<input id="ntrp" type="checkbox" value="3.5" name="ntrp" onclick='SingleSelect("ntrp",this);'/>
+  &nbsp;4.0<input id="ntrp" type="checkbox" value="4.0" name="ntrp" onclick='SingleSelect("ntrp",this);'/>
+  &nbsp;4.5<input id="ntrp" type="checkbox" value="4.5" name="ntrp" onclick='SingleSelect("ntrp",this);'/>
+
+  <input type="checkbox"  style="opacity:0; position:absolute: left:999px" value="M" id="boy" name="gender" />  
+  <input type="checkbox"  style="opacity:0; position:absolute; left:999px" value="W" id="girl" name="gender" /> 
+
+  <p>
+  Email Address:    <input id="email" class="ename pemail " name="email" type="text"/> 
+  @<input id="url" class="ename pemail" name="url" type="text"/> 
+  &nbsp;
+  <p>
+  Golden Gate  Tennis Club Member
+  Y<input id="member" type="checkbox"  value="Y" name="member" onclick="SingleSelect('member',this);"/>  
+  N<input id="member" type="checkbox"  value="N" name="member" onclick="SingleSelect('member',this);"/> 
+  <p>
+
+<p>
+
+</form>
+
+  <div id="_MESSAGE"></div>
+
+<!--
+  <div id="_PAYPAL" style="display:none">
+  <input type="submit" class="button" value="Submit Application to Paypal" name="submit" onclick="SingleSelect('division',this);"/>
+  </div>
+-->
+
+  <input id="_PAYPAL" type="button" class="button" value="Sign Up" onclick='JClick("PAYPAL",this)'/>
+
+  <div id="_CLOSED" style="display:none">
+       <h2>Entries Closed - For late entries, email tournaments@sctennisclub.org</h2>
+  </div>
+
+  </form>
+  </div>
+
+  <p>
+
+
+<center>
+
+<h2>Club Day Entrants</h2>
+
+<table align="center" class="sortable" width="60%">
+<thead>
+<tr>
+<th scope="col" align="left">First Name</th>
+<th scope="col" align="left">Last Name</th>
+<th scope="col" align="left">NTRP</th>
+<th scope="col" align="left">Member</th>
+</thead>
+<?php
+
+
+$url = "http://localhost:8080/clubday";
+$url = "http://www.jeung4tennis.appspot.com/clubday";
+
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, $url);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+$obj = json_decode($result, $assoc= TRUE);
+
+date_default_timezone_set('America/Los_Angeles');
+
+if( sizeof($obj) == 0) return;
+
+foreach ( $obj as $row ){
+     print( "<tr>");
+     print( '<td align="left">'.$row["fname"] );
+     print( "<td>".$row["lname"] );
+     print( "<td>".$row["ntrp"] );
+     print( "<td>".$row["member"] );
+
+}
+
+?>
+
+
+
+</html>

@@ -1,0 +1,20 @@
+#pageHeader {
+	height: 80px;
+}
+
+#headerLine {
+	height: 111px;
+}
+
+div#navbarContainer {
+	top: 58px;
+}
+	
+#pageHeader h1, #pageHeader h2 {
+	margin-top: 6px;
+}
+
+* + html #pageHeader h2, * html #pageHeader h2 {
+	position: relative;
+	top: -12px;
+}

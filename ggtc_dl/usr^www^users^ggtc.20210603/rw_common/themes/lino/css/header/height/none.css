@@ -1,0 +1,28 @@
+#pageHeader, #headerLine {
+	height: 30px;
+}
+
+#pageHeader {
+	background: transparent !important;
+	top: 0 !important;
+}
+
+#pageHeader {
+	height: 29px;
+}
+
+#pageHeader h1, #pageHeader h2 {
+	display: none;
+}
+#contentContainer {
+	
+}
+
+div#navbarContainer {
+	position: absolute;
+	top: -23px;
+}
+#top {
+	display: none;
+	position: absolute;
+}

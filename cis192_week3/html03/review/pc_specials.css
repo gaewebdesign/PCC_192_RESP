@@ -1,0 +1,147 @@
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 3
+   Review Assignment
+   
+   Style Sheet for the Pandaisia Chocolates Monthly Specials
+   Author: Roger Okamoto
+   Date:   2/3/2022 (Thursday)
+   
+   Filename: pc_specials.css
+
+*/
+
+/* Page Body Styles */
+body{
+
+   width: 95%;
+   min-width: 640px;
+   max-width: 960px;
+   margin-left: auto;
+   margin-right: auto;
+
+}
+
+
+/* Image Styles */
+
+img{
+   display: block;
+   width: 100%;
+
+}
+
+/* Horizontal Navigation Styles */
+nav.horizontal li{
+   display: block;
+   float: left;
+   width: 16.66%;
+}
+
+nav.horizontal a{
+   display:block;        /* RO figure out block */
+}
+nav.horizontal a:hover{   /* has to be within nav.horizontal for hover to work */
+   color: rgb(0, 255, 0);
+
+}
+
+
+
+
+/* Grid Styles */
+body {
+
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   grid-column-gap: 20px;
+
+}
+
+/* header enclosed nav horiontal so the 1/-1 to stretch
+   the links enclosed within the header from the far left(1) 
+   to the far right (-1)
+   change (-1) to (-2) to see how the nav (Home -> Contact)
+   moves from 1 to short (-2) of the far right
+   1    2     3   4
+   -4   -3    -2   -1
+*/
+header{
+
+   grid-column: 1/-1 ; /* negative means far RIGHT grid position */
+}
+
+footer {
+
+   grid-column: 1/-1;   /* negative means for RIGHT grid position */
+}
+
+/* Specials Styles */
+/* with sections id+sub are the 3 chocolates */
+section#sub{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Each chocolate special is a specials class within div */
+div.specials{
+  min-height: 400px;
+  outline-style: dashed;
+  outline-width: 1px;
+  color: rgb(71,52,29);
+}
+
+/* Award Styles */
+/* within aside 
+ There are 5 awards id(award1 ,2 ,3 ,4 ,5) contains with div id=award*
+ */
+aside{
+
+   position: relative;
+   height: 650px;
+   overflow:auto;
+}
+
+aside div{
+    width:30%;
+    position: absolute;   /* <--------- why is this absolute ? ---------  roger*/
+
+}
+
+
+div#award1{
+   top: 80px;
+   left: 5%;
+}
+
+div#award2{
+   top: 280px;
+   left: 60%;
+}
+div#award3{
+   top: 400px;
+   left: 20%;
+}
+div#award4{
+   top: 630px;
+   left: 45%;
+}
+
+div#award5{
+   top: 750px;
+   left: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

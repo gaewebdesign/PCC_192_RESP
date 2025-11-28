@@ -1,0 +1,9 @@
+#sidebarContainer {
+	width: 0;
+	float: none;
+	display: none;
+}
+
+#mainContent {
+	margin-left: 0;
+}

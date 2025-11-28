@@ -1,0 +1,336 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+</head>
+
+<body>
+
+<style>
+p { margin-top: 0.18em;}
+
+
+body,html{
+      margin-top:1;
+      margin-left:30;
+      margin-right:25;
+      font-size:17 px; 
+
+}
+
+body {
+       font-size:16px; 
+       background-color: #78B3FB;
+
+
+}
+
+</style>
+
+<center>
+
+<p>
+<p>
+<div id="title"> Golden Gate Tennis Club</div>
+<div id="app"> www.goldengatetennisclub.org</div>
+<div id="app"> 2019 March Club Day</div>
+</center>
+
+<p>
+<center>
+<img src = "ggbridge.png">
+</center>
+<br>
+
+
+<?php
+
+// foreach ( $_POST as $key => $value)    echo $key." -> ".$_POST[$key]."<br>";
+
+define("FNAME", "fname" );
+define("LNAME", "lname" );
+define("EMAIL", "email" );
+define("URL", "url" );
+define("GENDER", "gender" );
+define("NTRP", "ntrp" );
+define("MEMBER", "member" );
+
+
+function err($t)
+{
+    echo $t."<br>";
+}
+
+
+function CheckForErrors()
+{
+
+  $err=0;
+
+  if( strlen( $_POST[FNAME])<3)     {  $err |= ERR_NAME; err("fname ");}
+  if( strlen( $_POST[LNAME])<2)     {  $err |= ERR_NAME; err("lname".$_POST[LNAME] ); }
+
+  return $err;
+
+}
+
+function span( $_TAG, $val )
+{
+
+// <span id="_TAG"> value </span>
+
+   echo '<span id="'.$TAG.'>"'.$val."</span>";
+
+}
+
+function Styles()
+{
+   p( '<style type="text/css">');
+   p( ".MiniTable {");
+   p( "width:70%;");
+   p( "border:1px solid #000;");
+   p( "}");
+   p( "</style>");
+
+
+}
+
+
+?>
+
+<html>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<body bgcolor="ABCDEF">
+
+<head>
+<!--
+<link rel="stylesheet" type="text/css" href="tourny.css">
+#fd5e00
+-->
+
+</head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+body {
+ background-color: #abcdef
+}
+
+.intro{
+  font-size: 26px;
+  color: blue;
+
+}
+
+.info{
+  font-size: 24px;
+  color: black;
+
+}
+
+
+.contact{
+  font-size: 26px;
+  color: black;
+
+}
+
+
+
+.CLASSIC{
+   border: 0px solid blue;
+   table-layout: fixed;
+   width:  80%;
+// background: url("pumpkin.png")
+
+}
+
+.twenty{
+    width: 25%;
+
+}
+
+.eighty{
+    width: 75%;
+
+
+}
+
+table {
+        width:75%;
+        border:0px solid #000;
+      }
+</style>
+
+<center>
+
+<?php
+
+  $response = $_POST["g-recaptcha-response"] ;
+
+  $secretKey = '6LdWfYEUAAAAAA2ooi82eRgkynjXrpW8N7VWGjc6';
+  $captcha = $_POST["g-recaptcha-response"] ;
+
+  $ch = curl_init();
+
+  curl_setopt_array($ch, [
+    CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => [
+        'secret' => $secretKey,
+        'response' => $captcha,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ],
+    CURLOPT_RETURNTRANSFER => true
+]);
+
+$output = curl_exec($ch);
+curl_close($ch);
+
+$captcha_success = json_decode($output);
+
+/*
+  if ($captcha_success->success==false) {
+ 	       echo "<p>You are a bot! Go away!</p>";
+                return;
+	     } else if ($captcha_success->success==true) {
+	       echo "<p>Not a bot!</p>";
+       }
+*/
+
+
+?>
+
+&nbsp;
+<p height="10">
+
+<div class="intro">
+
+
+<div class="contact">
+<p height="20">
+Thank you for entering the Spring Fever Club Day event<br>
+If you have any questions --- if you need to change your information or withdraw from the event
+<p>
+Contact: Ken Tse at <a href="rcyclops@goldengatetennisclub.org">rcyclops@goldengatetennisclub.org</a> 
+<p>
+</div>
+
+<p>
+
+<span id="_ENTRANTS" "style=display:none">
+
+<table>
+
+<tr><p><p><p><p><td height="75"></td><td> </td></tr>
+
+<tr><td class="info">Name </td><td class="info"><?php echo($_POST[FNAME]." ".$_POST[LNAME]) ?></td><td></td></tr>
+<tr><td class="info">NTRP </td><td class="info"><?php echo($_POST[GENDER].$_POST[NTRP]) ?></td><td></td></tr>
+<tr><td class="info">Email </td><td class="info"><?php echo($_POST[EMAIL]."@".$_POST[URL]) ?></td><td></td></tr>
+<tr><td class="info">GGTC Member </td><td class="info"><?php echo($_POST[MEMBER]) ?></td><td></td></tr>
+
+
+<tr><p><p><p><p><td height="300"></td><td> </td></tr>
+
+</table>
+
+<p>
+
+
+
+</span>
+
+<?php
+
+sessionToGAE();
+
+function sessiontoGAE()
+{
+   $fname= $_POST[FNAME];
+   $lname= $_POST[LNAME];
+   $gender =   $_POST[GENDER] ;
+   $ntrp =   $_POST[NTRP];
+   $email =   $_POST[EMAIL];
+   $url =   $_POST[URL];
+   $member =   $_POST[MEMBER];
+
+   $data = array(
+      'fname' => $fname,
+      'lname' => $lname,
+      'gender' => $gender,
+      'ntrp' => $ntrp,
+      'email' => $email,
+      'url' => $url,
+      'member' => $member,
+   );
+
+
+
+  $url = "www.jeung4tennis.appspot.com/enter";
+
+  $url = "http://localhost:8080/enter";
+
+  $payload = json_encode (  $data  );
+  $ch = curl_init( $url ) ;
+  curl_setopt($ch , CURLOPT_POSTFIELDS, $payload );
+  curl_setopt($ch , CURLOPT_RETURNTRANSFER, $true );
+
+  $result = curl_exec($ch);
+  curl_close($ch);
+
+// Send Email
+   sendmail();
+
+}
+
+
+function sendmail(){
+
+   $name = $_POST[FNAME]." ".$_POST[LNAME];
+   $email= $_POST[EMAIL]."@".$_POST[URL];
+   $ntrp= $_POST[GENDER].$_POST[NTRP];
+   $member= $_POST[MEMBER];
+
+
+   $to = "tennis.mutt@gmail.com";
+   $subject = "GGTC Club Day ($name)";
+
+   $message = "Golden Gate Tennis Club";
+   $message .= "<br>";
+   $message .= "<br>";
+
+   $message .= "NAME:         $name";
+   $message .= "\r\n<br>";
+   $message .= "\nEMAIL:        $email";
+   $message .= "\r\n<br>";
+   $message .= "\nNTRP:          $ntrp";
+   $message .= "\r\n<br>";
+   $message .= "\nGGTC MEMBER:  $member";
+   $message .= "\r\n<br>";
+
+
+   $headers  = 'MIME-Version: 1.0' . "\r\n";
+   $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+   $headers .= "From: roger@goldengatetennisclub.org  \r\n";
+
+//   echo $subject;
+//   echo $headers;
+
+   $r=mail($to,$subject,$message,$headers);
+   echo "...";
+
+}
+
+
+
+
+?>
+

@@ -1,0 +1,218 @@
+body,
+.movie-background, .photo-background {
+	background-color: #006600;
+}
+
+a:link, a:visited {
+	color: #000000;
+}
+
+a:hover, a:active {
+}
+
+
+#contentContainer {
+	color: #3F3F3F;
+	background-color: #F3F3F3;
+	border-color: #FFFFFF;
+}
+
+.movie-description {
+	color: #3F3F3F;
+}
+
+#top, #pageHeader, #bottom, #footer, #top_center, #headerLine {
+	border-color: #FFFFFF;
+	background-color: #006600;
+}
+
+#mainContent, #sidebarContainer {
+	border-color: #FFFFFF;
+	color: #3F3F3F;
+}
+
+div#navbarContainer ul a {
+	border-color: #FFFFFF;
+	background-color: #7F7F7F;
+}
+
+
+
+/* @group File Sharing */
+
+.filesharing-item {
+	background-color: #FFFFFF;
+	border: 2px solid #DADADA;
+}
+
+.filesharing-description {
+	border-bottom-color: #FFFFFF;
+}
+
+
+.filesharing-item-title {
+	color: #323232;
+	background-color: #FFFFFF;
+}
+
+
+.filesharing-item-description {
+}
+
+/* @end */
+
+.standout {
+	border-color: #FFFFFF;
+}
+		
+#pageHeader {
+	background-color: #BFBFBF;
+}
+
+.photo-navigation {
+	background-color: #C2C2C2;
+}
+
+#pageHeader h1 {
+	color: #FFFFFF;
+}
+		
+#pageHeader h2 {
+	color: #7F7F7F;
+}
+		
+.photo-links {
+	background-color: %colour_body_bg * 0.6%;
+	border-bottom-color: #5F5F5F;
+}
+
+.photo-caption {
+	color: #3F3F3F;
+}
+
+.photo-title {
+	color: #4B4B4B;
+}
+
+.blog-entry {
+	border-color: #FFFFFF;
+}
+
+
+.blog-entry-title a {
+	color: #3F3F3F;
+}
+
+.blog-entry-title a:hover {
+	color: #000000;
+	background: transparent;
+}
+
+.photo-links {
+	color: #000000;
+}
+
+.exif-data,
+ {
+	color: %colour_content_background * 2%;
+}
+
+div#navbarContainer ul li a{
+	color: #CCCCCC;
+}
+
+.photo-navigation a:link,
+.photo-navigation a:visited {
+	color: #000000;
+}
+
+div#navbarContainer ul a:hover {
+	color: #FFFFFF;
+	background-color: %colour_navbar_text_bg_active%;
+}
+
+div#navbarContainer .current,
+div#navbarContainer .currentAncestor {
+	color: #FFFFFF !important;
+}
+
+div#navbarContainer ul ul {
+}
+
+#sidebarContainer .sideHeader,
+#sidebarContainer h1,
+#sidebarContainer h2,
+#sidebarContainer h3,
+#sidebarContainer h4,
+#sidebarContainer h5,
+ {
+	font-weight: bold;
+}
+
+
+#sidebarContainer {
+	color: #CCCCCC;
+}
+
+
+#sidebarContainer a, #sidebarContainer a:hover {
+	color: #FFFFFF;
+}
+
+
+#footer, #bottom, #footer p {
+	color: #CCCCCC;
+}
+
+#footer a:link, #footer a:visited {
+	color: #E0E0E0;
+	text-decoration: underline;
+}
+
+#footer a:hover, #footer a:active {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+#mainContent h1, #movie-page-title, .movie-title {
+	color: #323232;
+}
+
+#mainContent h2, #movie-page-description {
+	color: #323232;
+}
+
+#mainContent h3, #movie-thumbnail-caption {
+	color: #383838;
+}
+
+#mainContent h4 {
+	color: #383838;
+}
+
+#mainContent h5 {
+	color: #3F3F3F;
+}
+
+.photo-frame, .thumbnail-frame {
+	border-color: #C2C2C2;
+	background-color: #FFFFFF;
+}
+
+.form-input-field, .form-input-button {
+	background-color: #FFFFFF;
+	border-color: #DADADA;
+	color: #3F3F3F;
+}
+
+/* @group Toolbar */
+
+div#navbarSide ul a { 
+	color: #CCCCCC;
+}
+
+div#navbarSide ul a.current, div#navbarSide ul a:hover { 
+	color: #FFFFFF;
+}
+

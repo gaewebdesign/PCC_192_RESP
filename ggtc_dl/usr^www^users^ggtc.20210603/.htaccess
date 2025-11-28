@@ -1,0 +1,26 @@
+# Begin cache control #
+
+ExpiresActive on
+#ExpiresActive off
+<FilesMatch ".*">
+Header unset Cache-Control
+Header unset Expires
+Header unset Last-Modified
+FileETag None
+Header unset Pragma
+</FilesMatch>
+# End cache control #
+AddType application/x-httpd-php .php .htm .html
+
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+RewriteRule ^events$  http://www.goldengatetennisclub.org/page3/page3.html  [NC,QSA,L]
+RewriteRule ^events  http://www.goldengatetennisclub.org/page3/page3.html  [NC,QSA,L]
+
+#RewriteRule ^playday$    http://www.goldengatetennisclub.org/page3/page3.html  [NC,QSA,L]
+#RewriteRule ^playday    http://www.goldengatetennisclub.org/page3/page3.html  [NC,QSA,L]

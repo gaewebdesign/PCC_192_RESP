@@ -1,0 +1,20 @@
+order allow,deny
+deny from 184.154.36
+allow from all
+
+RewriteEngine on
+#RewriteLog /private/var/log/apache2/rewrite_log
+#LogLevel warn
+#LogLevel alert rewrite:trace6
+
+Options +FollowSymLinks
+RewriteEngine On
+
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^clubday$ clubday.html  [NC,QSA,L]
+RewriteRule ^signup$ signclubday.php  [NC,QSA,L]
+RewriteRule ^players$ players.php  [NC,QSA,L]
+RewriteRule ^usta$ ustasfcheck.php  [NC,QSA,L]

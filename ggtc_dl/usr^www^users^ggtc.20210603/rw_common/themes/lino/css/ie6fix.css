@@ -1,0 +1,19 @@
+.image-left {
+	position: relative;
+}
+
+.image-right {
+	position: relative;
+}
+
+#top {
+	left: -0px;
+}
+#pageHeader {
+	top: 30px;
+}
+
+div#sidebarContainer {
+	position: relative;
+	height: 1%;
+}

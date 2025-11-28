@@ -1,0 +1,23 @@
+#pageHeader {
+	height: 40px;
+}
+
+#headerLine {
+	height: 71px;
+}
+
+div#navbarContainer {
+	top: 18px;
+}
+
+#pageHeader h1 {
+	float: left;
+	margin-top: 6px;
+	margin-right: 10px;
+}
+
+#pageHeader h2 {
+	float: left;
+	margin-top: 16px;
+	margin-left: 0px;
+}

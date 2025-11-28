@@ -1,0 +1,9 @@
+#contentContainer {
+margin: 0;
+}
+
+#leftbar, #rightbar {display: none;}
+
+#top_center, #footer, #contentContainer {
+	border-width: 0;
+}

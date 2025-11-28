@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>events</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="RapidWeaver" />
+		
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+		<script type="text/javascript">
+
+
+
+                function checkReCaptcha() {
+                 var response = grecaptcha.getResponse();
+                 if(response.length == 0) { 
+                    //reCaptcha not verified
+                      alert("no pass"); 
+                  }
+                   else { 
+                       //reCaptch verified
+                        alert("pass"); 
+                        var request = $.ajax(
+                           {
+//                             url: "hello.php",
+                               url: "dlist.php",
+                               type: "POST",
+                               dataType: "html",
+
+                           }
+
+                        )
+
+                        request.done( function(msg){
+                               document.write( msg);
+
+
+//                               document.write( "from hello.php");
+//                             print("from hello.php");
+
+                        });
+
+//                          $output = shell_exec("php hello.php");
+//                          print("<pre>$output </pre>");
+//                            header("Location: ./hello.php");
+
+                  }
+               }
+
+
+                </script>		
+
+	
+	</head>
+<body> 
+        <style>
+.button
+{
+       width:500px;
+       width:45em;
+       font-size:17px;
+       color:#CEC4FA;
+       color:#FFFFFF;
+
+       background-color:#f7cc83;
+       background-color:#CA5100;
+       background-color:#ABCDEF;
+
+       border-radius:5px;
+}
+
+.submitbutton
+{
+ width:270px;
+ font-size:17px;
+ color:#075;
+ background-color:#aed;
+ border-radius:5px;
+
+}
+
+.title
+{
+
+ font-size:25px;
+
+}
+
+.space{ line-height: .25 em;}
+p { margin-top: 0.18em;}
+
+
+body,html{
+      margin-top:1;
+      margin-left:30;
+      margin-right:25;
+//     font-size:26 px; 
+
+}
+
+
+        </style>
+
+  <div id="mainContent">
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+
+  <style>
+
+
+</style>
+
+<center>
+
+<p>
+
+
+<table>
+
+
+<div id="form">
+
+
+ <form>
+
+  <center>
+    Answer CAPTCHA to see membership
+    <br>
+ <center>
+  <font size="-2">
+  <div class="g-recaptcha" data-sitekey="6LdWfYEUAAAAALdpE4EdGoB6ku2yJO1S3tcV0g4V">  </div>
+  <font size="+2">
+  </center>
+
+
+  <input  type="button" class="button" value="View Golden Gate Tennis Club Membership" onclick='checkReCaptcha();'/>
+
+ </form>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,107 @@
+<html>
+
+<body>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="../javascript/sorttable.js"> </SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="javascript/sorttable.js"> </SCRIPT>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+<script language="javascript">
+
+
+                 function checkReCaptcha() {
+                 var response = grecaptcha.getResponse();
+                 if(response.length == 0) { 
+                    //reCaptcha not verified
+                    alert("no pass"); 
+                  } else { 
+
+                    $("#MEMB").after(" membership players");
+
+                    $("#MEMB").after('<?php include("dom.php");   >');
+                    }
+              }// function end
+
+
+
+
+
+
+
+
+</script>
+
+<style>
+
+#tablefont{
+        font-family: "Comic Sans MS", "Brush Script MT", cursive;
+        font-size:13 px;
+        background: #fefefe;
+        border: none;
+        height : 25 px;
+//      border-bottom: 1px solid black;
+
+}
+
+.centered-cell{
+       text-align: center;
+
+}
+
+th {
+       text-align: left
+}
+
+
+</style>
+
+
+<center>
+<p><br>
+<div id="eline">Santa Clara Tennis Club Membership List </div
+<p>
+
+
+ <center>
+  <font size="+10">
+  <div class="g-recaptcha" data-sitekey="6LdWfYEUAAAAALdpE4EdGoB6ku2yJO1S3tcV0g4V">  </div>
+  <font size="-10">
+  </center>
+
+
+  <input  type="button" class="button" value="Click here for  Membership" onclick='checkReCaptcha();'/>
+
+ </form>
+
+
+<table align="center" class="sortable" width="50%">
+
+<thead>
+<tr style="font-size:16px">
+<th scope="col">Year</th>
+<th scope="col">First Name</th>
+<th scope="col">Last Name</th>
+<th scope="col">NTRP</th>
+<th scope="col">Date</th>
+</thead>
+
+
+
+<div id="MEMB">
+
+</div>
+
+
+
+
+
+
+
+
+
+</table>
+</html>
+

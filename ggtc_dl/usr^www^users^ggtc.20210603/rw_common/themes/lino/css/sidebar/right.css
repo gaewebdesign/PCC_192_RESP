@@ -1,0 +1,21 @@
+#sidebarContainer {
+	width: 160px;
+	float: right;
+	border-right-width: 0;
+	border-left-width: 1px;
+	border-left-style: solid;
+
+}
+
+#mainContent {
+	margin-right: 200px;
+	margin-left: auto;
+	border-left-width: 0;
+	border-right-width: 1px;
+	border-right-style: solid;
+
+}
+
+* html #mainContent {
+	margin-right: 210px;
+}

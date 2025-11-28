@@ -1,0 +1,171 @@
+
+@charset "utf-8";
+
+:root{
+        --blue: rgb(136, 136, 243);
+        --primary-color: rgb(128, 160, 228); 
+
+}
+
+
+body{
+/*
+    
+    font-family: Gotham , "Helvetica Neue", Helvetica, Arial, "san-serif";
+
+    width: 90%;
+    min-width  : 600px; 
+    display: grid;
+    grid-template-columns: 200px auto 200px; 
+    grid-template-areas: "header header header"
+                         "link link link "
+                         "nav main side"
+                         "nav coupons side"
+                         "footer footer footer";
+    grid-gap: 10px 25px;
+
+  */
+    font-family: 'Lato', sans-serif;
+    color: #333;
+ /*   background-color: var(--primary-color); re-check why needed roger */
+    line-height: 1.6;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(23, 23, 23);
+
+}
+
+.navbar{
+
+    background-color: var(--primary-color);
+    color: rgb(187, 64, 64);
+    height: 70px;
+
+}
+
+.navbar .flex{
+
+    justify-content: space-between;
+}
+
+
+.navbar ul{
+    display:flex;         /* moves horizontal */
+    list-style: none        /* remove dots roger */
+
+}
+
+.navbar a{
+
+    color: #f3ecec;
+    padding: 10px;  /* space between links */
+    margin: 0 5px;
+
+}
+
+.navbar a:hover{
+
+    border-bottom: 2px rgb(221, 13, 13) solid;
+    border-bottom: 2px var(--link-hover) solid;
+}
+
+header { grid-area: header;}
+nav.horizontal { grid-area: link;}
+
+header img {
+    display: block;
+    width: 100%;
+ }
+
+/*
+ nav.horizontal {
+
+    background-color:  rgb(174, 195, 240);
+    background-color: var(--blue);
+    height: 50px;
+}
+
+nav.horizontal a{
+    color:rgb(123, 50, 218);
+}
+
+
+nav.horizontal ul {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+ }
+ nav.horizontal ul li {
+    display: block;
+    text-align: center;
+ }
+
+*/
+
+ footer { grid-area: footer;}
+
+ footer {
+    text-align: center;
+    color: white;
+    background-color:rgba(154,20,23,1.00);   
+    background-color: rgb(123, 50, 218);
+    background-color: var(--blue);
+    font-size: 1em;
+    height: 30px;
+    line-height: 30px;
+    
+    
+ }
+
+ /* Media Query  */
+
+
+ @media(max-width: 768px){
+
+   *{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+   }
+
+
+    .grid, .showcase .grid , .stats .grid , .cli .grid , .cloud .grid
+    .features-main .grid , .docs-main .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+    }
+
+
+}
+
+
+@media(max-width: 500px){
+
+    *{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+       }
+
+       
+    .navbar{
+        height: 110px; /* instead of 70 */
+    }
+
+    .navbar .flex{
+        flex-direction: column ;   /* instead of row */
+    }
+
+    .navbar ul{
+
+        padding: 10px;
+        background-color: rgba(0,0,0,0.1);  /* transparent background */
+
+    }
+
+
+
+
+}
+

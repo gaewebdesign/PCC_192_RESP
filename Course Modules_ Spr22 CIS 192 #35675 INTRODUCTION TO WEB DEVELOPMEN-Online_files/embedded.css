@@ -1,0 +1,314 @@
+@media screen and (min-height: 540px) and (max-height: 630px) {
+  .mini-window {
+    height: 440px !important;
+  }
+}
+
+@media screen and (max-height: 540px) {
+  .mini-window {
+    height: 340px !important;
+  }
+}
+
+.pronto-chat-iframe {
+  position: fixed;
+  z-index: 99999998;
+  pointer-events: none;
+  transform: translateY(-38px);
+}
+
+.mini-window {
+  bottom: 15px;
+  right: 15px;
+  width: 505px;
+  height: 540px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.mini-window.in-sidebar {
+  bottom: -40px;
+}
+
+.full-window {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.new-message-iframe {
+  position: fixed;
+  right: 85px;
+  width: 240px;
+  height: 55px;
+  z-index: 99999998;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 #888;
+}
+
+.pronto-new-message {
+  position: fixed;
+  bottom: 58px;
+  right: 15px;
+  width: 540px;
+  height: 64px;
+  z-index: 99999999;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  pointer-events: none;
+  transform: translateY(-5px);
+}
+
+.pronto-new-message.in-sidebar {
+  bottom: unset;
+  top: 15px;
+}
+
+.pronto-iframe-toggle {
+  position: fixed;
+  z-index: 999999999998;
+  cursor: pointer;
+}
+
+.pronto_iframe_toggle.in-sidebar a:focus {
+  box-shadow: none !important;
+  background-color: unset;
+}
+
+.pronto_iframe_toggle.in-sidebar a:active {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.pronto-message-name {
+  font-family: Avenir;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.pronto-message-missing-profile-pic {
+  border-radius: 50%;
+  padding: 15px;
+  background: #ddd;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 6px;
+  left: 8px;
+}
+
+.pronto-message-profile-pic {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  object-fit: cover;
+}
+
+.pronto-message-top-line {
+  position: absolute;
+  top: 8px;
+  left: 70px;
+}
+
+.pronto-message-top-line div {
+  display: inline-block;
+}
+
+.pronto-message-group-name {
+  margin-left: 10px;
+  font-family: Avenir;
+  font-size: 12px;
+  font-weight: 900;
+  color: #b7b9bd;
+}
+
+.pronto-message {
+  position: absolute;
+  bottom: 5px;
+  left: 70px;
+  font-family: Avenir;
+  font-size: 17px;
+  color: #2c2d30;
+  width: 400px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pronto-chat-toggle-arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-top: 20px solid transparent;
+
+  border-top: 20px solid #00DAB6;
+
+  position: absolute;
+  bottom: -14px;
+  right: 3px;
+}
+
+.pronto-iframe-toggle-expanded, .pronto-iframe-toggle-collapsed {
+  bottom: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+}
+
+.pronto-iframe-toggle-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pronto-expand-toggle-wrapper {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background: #00DAB6;
+/*  padding: 14px;*/
+  border-radius: 10px;
+/*  width: 65px;
+  height: 65px;*/
+  width: 45px;
+  height: 45px;
+}
+
+.pronto-expand-toggle-logo {
+  transition: all 0.1s ease-in-out 0.0s;
+  position: absolute;
+  /*right: 13px;
+  top: 12px;*/
+  right: 3px;
+  top: 2px;
+  width: 40px;
+  height: 40px;
+}
+
+.pronto-expand-toggle-x {
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.pronto-rotate-x {
+  transition: all 0.2s ease-in-out 0.0s;
+  transform: rotate(90deg);
+}
+
+/*.pronto-iframe-toggle-collapsed .pronto-expand-toggle {
+  border-radius: 50%;
+  transition: border-radius 0.1s linear;
+}
+
+.pronto-iframe-toggle-expanded .pronto-expand-toggle {
+  border-radius: 10px;
+  transition: border-radius 0.1s linear;
+}
+*/
+.pronto-iframe-toggle-container-title {
+  position: absolute;
+  left: 55px;
+  right: 45px;
+  top: 0;
+  bottom: 0;
+  color: #4f5053;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.pronto-iframe-toggle-expanded .pronto-iframe-toggle-container-title,
+.pronto-iframe-toggle-expanded .pronto-iframe-toggle-container-link,
+.pronto-iframe-toggle-expanded .pronto-iframe-toggle-container-alertbadge {
+  display: none;
+}
+
+.pronto-iframe-toggle-title-title {
+  font-size: 16px;
+/*  font-family: Avenir-Heavy;*/
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+}
+
+.pronto-iframe-toggle-title-category {
+/*  font-family: Avenir-Roman;*/
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.pronto-iframe-toggle-container-link {
+  height: 36px;
+  width: 38px;
+  position: absolute;
+  left: 10px;
+  top: 6px;
+}
+
+.pronto-iframe-toggle-container-alertbadge {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 37px;
+  right: 37px;
+}
+
+.pronto-iframe-toggle-container-alertbadge.in-sidebar {
+  top: 5px;
+  right: 10px;
+}
+
+.pronto-alert-badge-enter {
+  opacity: 1;
+  transition: opacity 0.3s;
+  transition-timing-function: cubic-bezier(1, 0, 0.32, 1.5);
+}
+
+.pronto-alert-badge-leave {
+  opacity: 0;
+  /*transition: opacity 0.3s ease-out;*/
+}
+
+.pronto-auth-iframe {
+  display: none;
+
+  /*CSS for debugging*/
+/*  position: fixed;
+  z-index: 99999998;
+  pointer-events: none;
+  bottom: 50px;
+  left: 200px;
+  height: 500px;
+  width: 700px;
+  border: solid 3px green;*/
+}
+
+.pronto-enabled-alert {
+  position: fixed;
+  left: 400px;
+  top: 45%;
+  width: 285px;
+  height: 130px;
+  z-index: 99999999;
+  background: #fff;
+  border: 1px solid #00DAB6;
+  border-radius: 8px;
+  cursor: pointer;
+  pointer-events: none;
+  font-size: 14px;
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  color: #00DAB6;
+  padding: 40px;
+  text-align: center;
+}

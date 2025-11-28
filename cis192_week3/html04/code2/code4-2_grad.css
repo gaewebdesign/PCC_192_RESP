@@ -1,0 +1,76 @@
+﻿@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 4
+   Coding Challenge 2
+
+   Author: Roger Okamoto
+   Date:   2/3/2022 (Thursday)
+   
+   Filename: code4-2_grad.css
+
+*/
+
+article{
+
+   border-radius: 125px;
+
+   /* this wraps around inside the outer region*/
+   box-shadow: 0px 0px 50px 20px black inset;
+
+   
+/*
+   background: url("landscape.png");
+   background-repeat: no-repeat;
+   background-position: bottom, right;
+   background-size: 100%;
+*/
+/* this is correct (above background is wrong 
+   background: url("landscape.png") no-repeat 100% ;
+   background-position: bottom right;
+   background: url(landscape.png) no-repeat bottom right/100%;
+
+
+ */
+
+/*
+    https://www.geeksforgeeks.org/how-css-transition-work-with-linear-gradient-background-button/
+     background-image: linear-gradient(to bottom right, green, white);
+
+*/
+
+/* 
+   https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient()
+   background: linear-gradient( 165deg, black, rgb(112, 202, 230) );
+   background: linear-gradient( 45deg, red 0 20% , blue 80% 100%);
+
+   gradually work up to the final linear-gradient 
+   background: linear-gradient(165deg, rgb(21, 34, 92) 0 65% , rgb(211,0,55)  65% 75% , orange 75% 80%, yellow 80%  82%);
+          -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    WRONG!   leave out the 0 so gradient blends in properly
+ */
+
+/* 
+   NOTE: In order to get the landscape AND the linear-gradient, need to combione in
+         a single statement   and leave out the 0 starting point, otherwise no blending , no sunset
+*/
+
+   background:  url(landscape.png) no-repeat bottom right/100%,
+             linear-gradient(165deg, rgb(21, 34, 92) 0 65% , rgb(211,0,55) 75% , orange 80%, yellow  82%);
+
+
+}
+
+
+
+              
+/* https://www.w3schools.com/cssref/css3_pr_text-shadow.asp */
+
+h1 ,h2 {
+     text-shadow: -2px -2px 3px white;    /* h-shadow v-shadow blur-radous(optional) color */
+}
+
+p{
+   text-shadow: 2px 2px  3px red;
+}
+

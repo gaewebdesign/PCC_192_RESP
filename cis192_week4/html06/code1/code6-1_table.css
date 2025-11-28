@@ -1,0 +1,56 @@
+﻿@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 6
+   Coding Challenge 1
+   
+   Author:   Roger Okamoto
+   Date:     2/10/2022 (Thursday)
+   Filename: code6-1_table.css
+
+*/
+
+table{
+   
+   border: 20px groove gray;
+   border-collapse: collapse;
+   text-align: left;
+   padding: 5px;
+   vertical-align: top
+
+
+}
+
+table col#firstCol{
+
+ background-color: yellow;
+ width: 150px;
+
+}
+
+table col#hourCol{
+
+   width: 75px;
+
+}
+
+table thead{
+   background-color: aqua;
+
+}
+
+
+th, td{
+
+   border: 1px  gray solid;
+   padding: 5px;
+   text-align: left;
+   vertical-align: top;
+}
+
+caption{
+   caption-side: top;
+   text-align: left;
+   font-size: 1.5em;
+}

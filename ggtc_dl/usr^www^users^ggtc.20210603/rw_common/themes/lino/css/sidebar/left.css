@@ -1,0 +1,13 @@
+#sidebarContainer {
+	width: 160px;
+	float: left;
+}
+
+#mainContent {
+	margin-left: 200px;
+	margin-right: auto;
+}
+
+* html #mainContent {
+	margin-left: 210px;
+}

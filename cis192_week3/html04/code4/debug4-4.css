@@ -1,0 +1,64 @@
+﻿
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 4
+   Coding Challenge 4
+
+   Author: Roger Okamoto
+   Date:   2/3/2022 (Thursday)
+   
+   Filename: debug4-4.css
+
+*/
+
+
+h1 {
+   text-shadow: rgb(80, 40, 0) 3px -3px 10px,    /* roger: add comma */
+                rgb(255, 255, 255) -1px -1px 1px;
+}
+
+article {    
+/* roger: change to box-shadown
+   drop-shadow: 0px 0px 5px 30px rgb(147, 59, 39);
+*/
+   box-shadow: 0px 0px 5px 30px rgb(147, 59, 39);   
+}
+
+article {
+	border: 20px solid transparent;
+
+/*
+   roger; change to border-image
+   image-border: linear-gradient(to bottom right, yellow, brown) 35%;
+*/   
+
+   border-image: linear-gradient(to bottom right, yellow, brown) 35%;
+}
+
+article { 
+   /*
+        fix with:  circle at  x% y%   (moves center as percentage)
+                   commas
+   */
+   background: radial-gradient(circle at 20% 15%, white 5% ,
+                               rgba(255, 255, 128, 0.8) 10%,
+                               rgba(80, 20, 0, 0.8) 75%,
+                               rgba(128, 0, 0, 0.8)),
+      
+                               url(michelangelo.png) no-repeat bottom right 75%,
+                               rgba(252, 250, 247);
+
+   
+/*
+     background: url(michealangelo.png);
+     
+/*     https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient()
+     
+     background: radial-gradient( #e66464 , #9198e5);
+     background: radial-gradient( circle at center ,red 0, blue, green 100%);
+
+     background: radial-gradient(  #e66464 , #9198e5 , url("michelangelo.png") );
+*/
+    }

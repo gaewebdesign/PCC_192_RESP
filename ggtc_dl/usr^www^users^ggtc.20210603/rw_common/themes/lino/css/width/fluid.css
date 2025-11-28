@@ -1,0 +1,42 @@
+#container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#contentContainer {
+	margin: 0;
+	margin-left: 140px;
+	margin-right: 140px;
+	padding-bottom: 20px;
+	padding: 0;
+	width: auto;
+}
+
+
+#top_center, #footer {
+	margin-left: 140px;
+	margin-right: 140px;
+	width: auto;
+}
+
+* + html #pageHeader, * + html #navbarContainer {
+	left: 0;
+}
+
+* html #navbarContainer {
+	position: absolute;
+	right: 140px;
+	top: 0;
+	width: auto;
+	overflow: hidden;
+	left: auto;
+}
+
+* html #navbarContainer ul {
+	position: absolute;
+	display: block;
+	right: 0;
+	float: none;
+	width: auto;
+	left: auto;
+}

@@ -1,0 +1,8 @@
+#contentContainer {
+	width: 880px;
+	margin: 0 auto;
+}
+
+#top_center, #footer {
+	width: 880px;
+}
